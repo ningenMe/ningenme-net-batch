@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="ningenme.net.batch.mybatis.AtcoderUserMapper">
+    <resultMap id="AtcoderUser" type="ningenme.net.batch.domain.AtcoderUserDomain">
+        <id property="atcoderId" column="atcoder_id"/>
+        <id property="rank" column="rank"/>
+        <id property="updatedTime" column="updated_time"/>
+        <id property="createdTime" column="created_time"/>
+    </resultMap>
+    <select id="select" resultMap="AtcoderUser">
+        SELECT * FROM atcoder_user WHERE atcoder_id = #{atcoderId}
+    </select>
+    <select id="selectAll" resultMap="AtcoderUser">
+        SELECT * FROM atcoder_user
+        <where>
+            <if test="atcoderId != null">
+                and atcoder_id = #{atcoderId}
+            </if>
+        </where>
+    </select>
+</mapper>
+

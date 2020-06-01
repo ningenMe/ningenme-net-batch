@@ -13,7 +13,7 @@ public class JobKick {
         this.atcoderUserServiceInterface = atcoderUserServiceInterface;
     }
 
-    @Scheduled(fixedRate = 500)
+    @Scheduled(fixedRate = 20000000)
     public void updateHistory() {
         atcoderUserServiceInterface.updateHistory();
     }
