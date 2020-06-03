@@ -17,9 +17,8 @@ public class AtcoderUserRepositoryImplement implements AtcoderUserRepositoryInte
     }
 
     @Override
-    public List<AtcoderUserDomain> get() {
-        String atcoderId = "ningenMe";
-        List<AtcoderUserDomain> atcoderUserDomains = this.sqlSessionTemplate.getMapper(AtcoderUserMapper.class).selectAll(atcoderId);
+    public List<AtcoderUserDomain> get(String atcoderId) {
+        List<AtcoderUserDomain> atcoderUserDomains = this.sqlSessionTemplate.getMapper(AtcoderUserMapper.class).select(atcoderId);
         return atcoderUserDomains;
     }
 }

@@ -15,11 +15,10 @@ public class AtcoderUserServiceImplement implements AtcoderUserServiceInterface 
     }
 
     @Override
-    public void updateHistory() {
+    public void updateAtcoderUser() {
         //ユーザーリストを取得
-        List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.get();
-        atcoderUserDomains.add(new AtcoderUserDomain("hoge"));
-        atcoderUserDomains.add(new AtcoderUserDomain("fuga"));
+        List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.get(null);
+        //ユーザごとに情報を取得
         for (AtcoderUserDomain atcoderUserDomain : atcoderUserDomains) {
             System.out.println(atcoderUserDomain.getAtcoderId());            
         }

@@ -1,5 +1,5 @@
 package ningenme.net.batch.service;
 
 public interface AtcoderUserServiceInterface {
-    public void updateHistory();
+    public void updateAtcoderUser();
 }

@@ -14,7 +14,7 @@ public class JobKick {
     }
 
     @Scheduled(fixedRate = 20000000)
-    public void updateHistory() {
-        atcoderUserServiceInterface.updateHistory();
+    public void updateAtcoderUser() {
+        atcoderUserServiceInterface.updateAtcoderUser();
     }
 }

@@ -5,5 +5,5 @@ import java.util.List;
 import ningenme.net.batch.domain.AtcoderUserDomain;
 
 public interface AtcoderUserRepositoryInterface {
-    List<AtcoderUserDomain> get();
+    List<AtcoderUserDomain> get(String atcoderId);
 }

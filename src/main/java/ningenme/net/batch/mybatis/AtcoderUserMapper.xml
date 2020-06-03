@@ -11,9 +11,6 @@
         <id property="createdTime" column="created_time"/>
     </resultMap>
     <select id="select" resultMap="AtcoderUser">
-        SELECT * FROM atcoder_user WHERE atcoder_id = #{atcoderId}
-    </select>
-    <select id="selectAll" resultMap="AtcoderUser">
         SELECT * FROM atcoder_user
         <where>
             <if test="atcoderId != null">
