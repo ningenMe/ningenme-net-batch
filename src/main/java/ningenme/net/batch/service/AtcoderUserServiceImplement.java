@@ -25,6 +25,8 @@ public class AtcoderUserServiceImplement implements AtcoderUserServiceInterface 
             String atcoderId = atcoderUserDomain.getAtcoderId();
             AtcoderUserPageDomain atcoderUserPageDomain = new AtcoderUserPageDomain(atcoderId);
             atcoderUserPageDomain.setAtcoderUserDomain();
+            AtcoderUserDomain newAtcoderUserDomain = atcoderUserPageDomain.getAtcoderUserDomain();
+            System.out.println(newAtcoderUserDomain);
         }
     } 
 }

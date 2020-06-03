@@ -28,14 +28,19 @@ public class AtcoderUserPageDomain {
             break;
         }
     }
-
     private void setTableElementToDomain(){
         for(int i = 0; i < element.size(); i++) {
             String key = element.get(i).select("th").text();
             String value = element.get(i).select("td").text();
-            
-            System.out.println("key: " + key);
-            System.out.println("val: " + value);
+            switch(key) {
+                case "TopCoder ID":
+                    this.atcoderUserDomain.setTopcoderId(value);
+                case "Codeforces ID":
+                    this.atcoderUserDomain.setCodeforcesId(value);
+            }
         }
+    }
+    public AtcoderUserDomain getAtcoderUserDomain(){
+        return this.atcoderUserDomain;
     }
 }

@@ -17,7 +17,8 @@ public class AtcoderUserDomain implements Serializable {
     private String  country;
     private String  affiliation;
     private Integer currentRate;
-    private Integer higestRate;
+    private Integer highestRate;
+    private Integer ratedMatches;
     private Timestamp createdTime;
     private Timestamp updatedTime;
 
@@ -33,6 +34,19 @@ public class AtcoderUserDomain implements Serializable {
     public void setAtcoderId(String atcoderId) {
         this.atcoderId = atcoderId;
     }
+    public String getTopcoderId() {
+        return this.topcoderId;
+    }
+    public void setTopcoderId(String topcoderId) {
+        this.topcoderId = topcoderId;
+    }
+    public String getCodeforcesId() {
+        return this.codeforcesId;
+    }
+    public void setCodeforcesId(String codeforcesId) {
+        this.codeforcesId = codeforcesId;
+    }
+
     public Integer getRank() {
         return this.rank;
     }
@@ -50,5 +64,14 @@ public class AtcoderUserDomain implements Serializable {
     }
     public void setUpdatedTime(Timestamp updatedTime) {
         this.updatedTime = updatedTime;
+    }
+    @Override
+    public String toString(){
+        String ret = "{";
+        ret += "atcoderId: "    + this.atcoderId    + ",\n";
+        ret += "topcoderId: "   + this.topcoderId   + ",\n";
+        ret += "codeforcesId: " + this.codeforcesId + ",\n";
+        ret += "}";
+        return ret;
     }
 }
