@@ -6,6 +6,8 @@
 <mapper namespace="ningenme.net.batch.mybatis.AtcoderUserMapper">
     <resultMap id="AtcoderUser" type="ningenme.net.batch.domain.AtcoderUserDomain">
         <id property="atcoderId" column="atcoder_id"/>
+        <id property="topcoderId" column="topcoder_id"/>
+        <id property="codeforcesId" column="codeforces_id"/>
         <id property="rank" column="rank"/>
         <id property="updatedTime" column="updated_time"/>
         <id property="createdTime" column="created_time"/>
@@ -18,5 +20,14 @@
             </if>
         </where>
     </select>
+    <update id="update">
+        UPDATE atcoder_user SET
+        topcoder_id   = #{topcoderId},
+        codeforces_id = #{codeforcesId},
+        rank          = #{rank},
+        current_rate  = #{currentRate},
+        highest_rate  = #{highestRate}
+        where atcoder_id = #{atcoderId}
+    </update>
 </mapper>
 

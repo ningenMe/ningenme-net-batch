@@ -17,8 +17,19 @@ public class AtcoderUserRepositoryImplement implements AtcoderUserRepositoryInte
     }
 
     @Override
-    public List<AtcoderUserDomain> get(String atcoderId) {
+    public List<AtcoderUserDomain> select(String atcoderId) {
         List<AtcoderUserDomain> atcoderUserDomains = this.sqlSessionTemplate.getMapper(AtcoderUserMapper.class).select(atcoderId);
         return atcoderUserDomains;
+    }
+
+    @Override
+    public List<AtcoderUserDomain> select() {
+        return select(null);
+    }
+
+    @Override
+    public void update(AtcoderUserDomain atcoderUserDomain){
+        // TODO なんかここで例外吐いてる？
+        this.sqlSessionTemplate.getMapper(AtcoderUserMapper.class).update(atcoderUserDomain);
     }
 }
