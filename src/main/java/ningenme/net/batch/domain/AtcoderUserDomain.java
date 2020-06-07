@@ -57,6 +57,12 @@ public class AtcoderUserDomain implements Serializable {
     public void setCodeforcesId(String codeforcesId) {
         this.codeforcesId = codeforcesId;
     }
+    public String getCountry() {
+        return this.country;
+    }
+    public void setCountry(String country) {
+        this.country = country;
+    }
     public Integer getRank() {
         return this.rank;
     }
@@ -124,6 +130,9 @@ public class AtcoderUserDomain implements Serializable {
                 case "Highest Rating":
                     setHighestRate(Integer.valueOf(value.split(" ")[0]));
                     break;
+                case "Country/Region":
+                    setCountry(value);
+                    break;
             }
         }
     }
@@ -134,6 +143,7 @@ public class AtcoderUserDomain implements Serializable {
         ret += "topcoderId: "   + this.topcoderId   + ",\n";
         ret += "codeforcesId: " + this.codeforcesId + ",\n";
         ret += "rank: "         + this.rank         + ",\n";
+        ret += "country: "      + this.country      + ",\n";
         ret += "}";
         return ret;
     }
