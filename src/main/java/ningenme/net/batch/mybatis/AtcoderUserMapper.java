@@ -9,5 +9,5 @@ import ningenme.net.batch.domain.AtcoderUserDomain;
 @Mapper
 public interface AtcoderUserMapper {
     List<AtcoderUserDomain> select(@Param("atcoderId") String atcoderId);
-    List<AtcoderUserDomain> update(AtcoderUserDomain atcoderUserDomain);
+    int update(AtcoderUserDomain atcoderUserDomain);
 }

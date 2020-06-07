@@ -29,7 +29,6 @@ public class AtcoderUserRepositoryImplement implements AtcoderUserRepositoryInte
 
     @Override
     public void update(AtcoderUserDomain atcoderUserDomain){
-        // TODO なんかここで例外吐いてる？
         this.sqlSessionTemplate.getMapper(AtcoderUserMapper.class).update(atcoderUserDomain);
     }
 }

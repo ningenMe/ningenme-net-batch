@@ -26,7 +26,8 @@
         codeforces_id = #{codeforcesId},
         rank          = #{rank},
         current_rate  = #{currentRate},
-        highest_rate  = #{highestRate}
+        highest_rate  = #{highestRate},
+        country       = #{country}
         where atcoder_id = #{atcoderId}
     </update>
 </mapper>
