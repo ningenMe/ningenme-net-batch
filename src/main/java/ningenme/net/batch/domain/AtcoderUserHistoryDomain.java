@@ -41,9 +41,13 @@ public class AtcoderUserHistoryDomain implements Serializable {
             for (AtcoderUserContestDomain atcoderUserContestDomain : atcoderUserContestDomains) {
                 processAtcoderUserContestDomain(atcoderUserContestDomain);
             }
+            Thread.sleep(3000L);
 		} catch (Exception e) {
             System.out.println(e.toString());
         }
+    }
+    public List<AtcoderUserContestDomain> getAtcoderUserContestDomains(){
+        return this.atcoderUserContestDomains;
     }
 
     //データ加工する内部メソッド

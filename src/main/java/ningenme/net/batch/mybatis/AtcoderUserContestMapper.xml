@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="ningenme.net.batch.mybatis.AtcoderUserContestMapper">
+    <insert id="replace">
+        REPLACE INTO atcoder_user_contest SET
+        atcoder_id          = #{atcoderId},
+        contest_name_en     = #{contestNameEn},
+        is_rated            = #{isRated},
+        place               = #{place},
+        old_rating          = #{oldRating},
+        new_rating          = #{newRating},
+        performance         = #{performance},
+        contest_type        = #{contestType},
+        contest_screen_name = #{contestScreenName},
+        contest_name        = #{contestName},
+        end_time            = #{endTime}
+    </insert>
+</mapper>
+

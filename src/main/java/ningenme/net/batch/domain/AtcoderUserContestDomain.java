@@ -115,7 +115,7 @@ public class AtcoderUserContestDomain implements Serializable {
         return this.contestType;
     }
     public void setContestType(String contestType) {
-        this.contestName = contestType;
+        this.contestType = contestType;
     }
 
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import ningenme.net.batch.BatchApplication;
 import ningenme.net.batch.domain.AtcoderUserDomain;
 import ningenme.net.batch.domain.AtcoderUserHistoryDomain;
+import ningenme.net.batch.repository.AtcoderUserHistoryRepositoryInterface;
 import ningenme.net.batch.repository.AtcoderUserRepositoryInterface;
 import ningenme.net.batch.util.LogCode;
 
@@ -15,8 +16,13 @@ import ningenme.net.batch.util.LogCode;
 public class AtcoderUserServiceImplement implements AtcoderUserServiceInterface {
 
     private final AtcoderUserRepositoryInterface atcoderUserRepositoryInterface;
-    public AtcoderUserServiceImplement(AtcoderUserRepositoryInterface atcoderUserRepositoryInterface) {
+    private final AtcoderUserHistoryRepositoryInterface atcoderUserHistoryRepositoryInterface;
+    public AtcoderUserServiceImplement(
+        AtcoderUserRepositoryInterface atcoderUserRepositoryInterface,
+        AtcoderUserHistoryRepositoryInterface atcoderUserHistoryRepositoryInterface
+    ) {
         this.atcoderUserRepositoryInterface = atcoderUserRepositoryInterface;
+        this.atcoderUserHistoryRepositoryInterface =  atcoderUserHistoryRepositoryInterface;
     }
 
     @Override
@@ -36,7 +42,8 @@ public class AtcoderUserServiceImplement implements AtcoderUserServiceInterface 
                 atcoderUserHistoryDomain.setAtcoderUserContestDomainsFromAtcoderPage();
                 //新しい情報でdb更新
                 atcoderUserRepositoryInterface.update(atcoderUserDomain);
-                
+                atcoderUserHistoryRepositoryInterface.update(atcoderUserHistoryDomain);
+                BatchApplication.logger.info(atcoderUserDomain.getAtcoderId() + " information was updated");
             }
             catch(Exception e) {
                 BatchApplication.logger.error(LogCode.map.get(e.toString()));
