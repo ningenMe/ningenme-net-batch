@@ -113,7 +113,6 @@ public class AtcoderUserDomain implements Serializable {
         for(int i = 0; i < element.size(); i++) {
             String key = element.get(i).select("th").text();
             String value = element.get(i).select("td").text();
-            System.out.println(key+" : "+value);
             switch(key) {
                 case "TopCoder ID":
                     setTopcoderId(value);

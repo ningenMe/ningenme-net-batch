@@ -12,6 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class BatchApplication {
 
 	public static final Logger logger = LoggerFactory.getLogger(BatchApplication.class);
+	
 	public static void main(String[] args) {
 		SpringApplication.run(BatchApplication.class, args);
 	}

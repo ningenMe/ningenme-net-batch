@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ningenme.net.batch.BatchApplication;
 import ningenme.net.batch.domain.AtcoderUserDomain;
+import ningenme.net.batch.domain.AtcoderUserHistoryDomain;
 import ningenme.net.batch.repository.AtcoderUserRepositoryInterface;
 import ningenme.net.batch.util.LogCode;
 
@@ -21,15 +22,21 @@ public class AtcoderUserServiceImplement implements AtcoderUserServiceInterface 
     @Override
     public void updateAtcoderUser() {
         //ユーザーリストを取得
+
+        // List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select();
         List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select("ningenMe");
-        // List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.get();
+
         //ユーザごとに情報を取得
         for (AtcoderUserDomain atcoderUserDomain : atcoderUserDomains) {
             try{
-                //webからスクレイピングして情報更新
+                //webからスクレイピングして情報取得
                 atcoderUserDomain.setAtcoderUserDomainFromAtcoderPage();
+                //rated historyも取得
+                AtcoderUserHistoryDomain atcoderUserHistoryDomain = new AtcoderUserHistoryDomain(atcoderUserDomain.getAtcoderId());
+                atcoderUserHistoryDomain.setAtcoderUserContestDomainsFromAtcoderPage();
                 //新しい情報でdb更新
-                atcoderUserRepositoryInterface.update(atcoderUserDomain);                
+                atcoderUserRepositoryInterface.update(atcoderUserDomain);
+                
             }
             catch(Exception e) {
                 BatchApplication.logger.error(LogCode.map.get(e.toString()));
