@@ -41,7 +41,7 @@ public class AtcoderUserHistoryDomain implements Serializable {
             for (AtcoderUserContestDomain atcoderUserContestDomain : atcoderUserContestDomains) {
                 processAtcoderUserContestDomain(atcoderUserContestDomain);
             }
-            Thread.sleep(3000L);
+            Thread.sleep(1500L);
 		} catch (Exception e) {
             System.out.println(e.toString());
         }

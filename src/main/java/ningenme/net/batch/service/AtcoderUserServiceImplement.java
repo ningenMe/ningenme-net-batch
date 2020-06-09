@@ -29,24 +29,28 @@ public class AtcoderUserServiceImplement implements AtcoderUserServiceInterface 
     public void updateAtcoderUser() {
         //ユーザーリストを取得
 
-        // List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select();
-        List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select("ningenMe");
-
+        List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select();
+        // List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select("ningenMe");
+        
         //ユーザごとに情報を取得
         for (AtcoderUserDomain atcoderUserDomain : atcoderUserDomains) {
             try{
+                BatchApplication.logger.info(atcoderUserDomain.getAtcoderId() + " information update start");
+
                 //webからスクレイピングして情報取得
                 atcoderUserDomain.setAtcoderUserDomainFromAtcoderPage();
-                //rated historyも取得
+                // rated historyも取得
                 AtcoderUserHistoryDomain atcoderUserHistoryDomain = new AtcoderUserHistoryDomain(atcoderUserDomain.getAtcoderId());
                 atcoderUserHistoryDomain.setAtcoderUserContestDomainsFromAtcoderPage();
                 //新しい情報でdb更新
                 atcoderUserRepositoryInterface.update(atcoderUserDomain);
                 atcoderUserHistoryRepositoryInterface.update(atcoderUserHistoryDomain);
-                BatchApplication.logger.info(atcoderUserDomain.getAtcoderId() + " information was updated");
+
+                BatchApplication.logger.info(atcoderUserDomain.getAtcoderId() + " information update end");
             }
             catch(Exception e) {
                 BatchApplication.logger.error(LogCode.map.get(e.toString()));
+                BatchApplication.logger.info(atcoderUserDomain.getAtcoderId() + " information update failed");
             }
         }
     } 

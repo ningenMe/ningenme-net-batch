@@ -99,7 +99,7 @@ public class AtcoderUserDomain implements Serializable {
                 this.document = Jsoup.connect(this.atcoderUserPageUrlPrefix+this.atcoderId).get();
                 this.element = document.select("table tr");
                 setTableElementToDomain();
-                Thread.sleep(3000L);
+                Thread.sleep(1500L);
             }
             catch(Exception e) {
                 BatchApplication.logger.error(e.toString());
@@ -113,6 +113,7 @@ public class AtcoderUserDomain implements Serializable {
         for(int i = 0; i < element.size(); i++) {
             String key = element.get(i).select("th").text();
             String value = element.get(i).select("td").text();
+            // System.out.println(key+":"+value);
             switch(key) {
                 case "TopCoder ID":
                     setTopcoderId(value);
@@ -124,7 +125,7 @@ public class AtcoderUserDomain implements Serializable {
                     setRank( Integer.valueOf(value.substring(0, value.length()-2)) );
                     break;
                 case "Rating":
-                    setCurrentRate(Integer.valueOf(value));
+                    setCurrentRate(Integer.valueOf(value.split(" ")[0]));
                     break;
                 case "Highest Rating":
                     setHighestRate(Integer.valueOf(value.split(" ")[0]));
