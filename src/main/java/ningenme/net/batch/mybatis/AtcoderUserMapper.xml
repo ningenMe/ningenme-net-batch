@@ -16,7 +16,10 @@
         SELECT * FROM atcoder_user
         <where>
             <if test="atcoderId != null">
-                and atcoder_id = #{atcoderId}
+                AND atcoder_id = #{atcoderId}
+            </if>
+            <if test="true">
+                AND deleted_time IS NULL
             </if>
         </where>
     </select>
