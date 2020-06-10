@@ -13,4 +13,4 @@ export $key=$value
 done
 
 java -jar target/ningenme-net-batch.jar &
-curl -X POST --data-urlencode "payload={\"text\":\"succeeded api-java deploy\",\"channel\":\"#log-info\",}" $SLACK_WEBHOOK_URL
+curl -X POST --data-urlencode "payload={\"text\":\"succeeded batch deploy\",\"channel\":\"#log-info\",}" $SLACK_WEBHOOK_URL
