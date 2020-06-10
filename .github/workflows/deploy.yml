@@ -34,4 +34,4 @@ jobs:
         HOST_NAME: ${{ secrets.HOST_NAME }}
       run: |
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-#        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd ningenme-net-batch; git pull; sh ./deploy.sh > /dev/null 2>&1'
+        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd ningenme-net-batch; git pull; sh ./deploy.sh > /dev/null 2>&1'
