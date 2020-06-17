@@ -29,8 +29,8 @@ public class AtcoderUserServiceImplement implements AtcoderUserServiceInterface 
     public void updateAtcoderUser() {
         //ユーザーリストを取得
 
-        // List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select();
-        List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select("ningenMe");
+        List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select();
+        // List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select("ningenMe");
         
         //ユーザごとに情報を取得
         for (AtcoderUserDomain atcoderUserDomain : atcoderUserDomains) {
