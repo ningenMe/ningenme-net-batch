@@ -62,13 +62,13 @@ public class AtcoderUserHistoryDomain implements Serializable {
         String[] contestNameArray = atcoderUserContestDomain.getContestNameEn().split(" ");
         String contestType = "";
         if(contestNameArray.length >= 3 && contestNameArray[0].equals("AtCoder") && contestNameArray[1].equals("Beginner") && contestNameArray[2].equals("Contest")) {
-            contestType = "ABC";
+            contestType = "abc";
         }
         if(contestNameArray.length >= 3 && contestNameArray[0].equals("AtCoder") && contestNameArray[1].equals("Regular") && contestNameArray[2].equals("Contest")) {
-            contestType = "ARC";
+            contestType = "arc";
         }
         if(contestNameArray.length >= 3 && contestNameArray[0].equals("AtCoder") && contestNameArray[1].equals("Grand") && contestNameArray[2].equals("Contest")) {
-            contestType = "AGC";
+            contestType = "agc";
         }
         atcoderUserContestDomain.setContestType(contestType);
     }

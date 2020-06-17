@@ -1,7 +1,7 @@
-pid=`jps | awk -F: '/ningenme-net-batch.jar/{print $1}' | awk '{print $1}'`
-if [ $pid != "" ] ; then
-    kill -9 $pid
-fi
+# pid=`jps | awk -F: '/ningenme-net-batch.jar/{print $1}' | awk '{print $1}'`
+# if [ $pid != "" ] ; then
+#     kill -9 $pid
+# fi
 
 ./mvnw clean
 ./mvnw package
@@ -12,5 +12,5 @@ value=`sudo -u ec2-user aws ssm get-parameters --name $key --query "Parameters[*
 export $key=$value
 done
 
-java -jar target/ningenme-net-batch.jar &
-curl -X POST --data-urlencode "payload={\"text\":\"succeeded batch deploy\",\"channel\":\"#log-info\",}" $SLACK_WEBHOOK_URL
+# java -jar target/ningenme-net-batch.jar &
+# curl -X POST --data-urlencode "payload={\"text\":\"succeeded batch deploy\",\"channel\":\"#log-info\",}" $SLACK_WEBHOOK_URL

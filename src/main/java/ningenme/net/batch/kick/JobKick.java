@@ -13,8 +13,6 @@ public class JobKick {
         this.atcoderUserServiceInterface = atcoderUserServiceInterface;
     }
 
-    // @Scheduled(fixedDelay = 50000000)
-    @Scheduled(cron = "0 0 3 * * 1", zone = "Asia/Tokyo")
     public void updateAtcoderUser() {
         atcoderUserServiceInterface.updateAtcoderUser();
     }
