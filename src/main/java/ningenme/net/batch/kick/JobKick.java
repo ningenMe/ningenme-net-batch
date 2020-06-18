@@ -13,7 +13,9 @@ public class JobKick {
         this.atcoderUserServiceInterface = atcoderUserServiceInterface;
     }
 
-    public void updateAtcoderUser() {
-        atcoderUserServiceInterface.updateAtcoderUser();
+    public void batchKick(String arg) {
+        if( arg.equals("updateAtcoderUser")) {
+            atcoderUserServiceInterface.updateAtcoderUser();
+        } 
     }
 }

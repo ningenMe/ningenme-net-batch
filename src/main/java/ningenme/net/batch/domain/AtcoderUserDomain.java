@@ -25,6 +25,7 @@ public class AtcoderUserDomain implements Serializable {
     private Integer currentRate;
     private Integer highestRate;
     private Integer ratedMatches;
+    private Timestamp deletedTime;
     private Timestamp createdTime;
     private Timestamp updatedTime;
 
@@ -80,6 +81,12 @@ public class AtcoderUserDomain implements Serializable {
     }
     public void setHighestRate(Integer highestRate) {
         this.highestRate = highestRate;
+    }
+    public Timestamp getDeletedTime() {
+        return this.deletedTime;
+    }
+    public void setDeletedTime(Timestamp deletedTime) {
+        this.deletedTime = deletedTime;
     }
     public Timestamp getCreatedTime() {
         return this.createdTime;
@@ -138,13 +145,16 @@ public class AtcoderUserDomain implements Serializable {
     }
     @Override
     public String toString(){
-        String ret = "{";
-        ret += "atcoderId: "    + this.atcoderId    + ",\n";
-        ret += "topcoderId: "   + this.topcoderId   + ",\n";
-        ret += "codeforcesId: " + this.codeforcesId + ",\n";
-        ret += "rank: "         + this.rank         + ",\n";
-        ret += "country: "      + this.country      + ",\n";
-        ret += "}";
+        String ret = "{\n";
+        ret += " atcoderId: "    + this.atcoderId    + ",\n";
+        ret += " topcoderId: "   + this.topcoderId   + ",\n";
+        ret += " codeforcesId: " + this.codeforcesId + ",\n";
+        ret += " rank: "         + this.rank         + ",\n";
+        ret += " country: "      + this.country      + ",\n";
+        ret += " deletedTime: "  + this.deletedTime  + ",\n";
+        ret += " createdTime: "  + this.createdTime  + ",\n";
+        ret += " updatedTime: "  + this.updatedTime  + ",\n";
+        ret += "}\n";
         return ret;
     }
 }

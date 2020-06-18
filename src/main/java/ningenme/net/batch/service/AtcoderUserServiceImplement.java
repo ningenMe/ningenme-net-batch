@@ -1,4 +1,5 @@
 package ningenme.net.batch.service;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -29,29 +30,48 @@ public class AtcoderUserServiceImplement implements AtcoderUserServiceInterface 
     public void updateAtcoderUser() {
         //ユーザーリストを取得
 
-        List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select();
-        // List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select("ningenMe");
+        // List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select();
+        List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select("ningenMe");
         
         //ユーザごとに情報を取得
         for (AtcoderUserDomain atcoderUserDomain : atcoderUserDomains) {
+            BatchApplication.logger.info(atcoderUserDomain.getAtcoderId() + " information update start");
+
+            //ユーザー情報取得
             try{
-                BatchApplication.logger.info(atcoderUserDomain.getAtcoderId() + " information update start");
-
-                //webからスクレイピングして情報取得
                 atcoderUserDomain.setAtcoderUserDomainFromAtcoderPage();
-                // rated historyも取得
-                AtcoderUserHistoryDomain atcoderUserHistoryDomain = new AtcoderUserHistoryDomain(atcoderUserDomain.getAtcoderId());
-                atcoderUserHistoryDomain.setAtcoderUserContestDomainsFromAtcoderPage();
-                //新しい情報でdb更新
-                atcoderUserRepositoryInterface.update(atcoderUserDomain);
-                atcoderUserHistoryRepositoryInterface.update(atcoderUserHistoryDomain);
+            }
+            catch(Exception e) {
+                //失敗したら論理削除
+                atcoderUserDomain.setDeletedTime(new Timestamp(System.currentTimeMillis()));
 
-                BatchApplication.logger.info(atcoderUserDomain.getAtcoderId() + " information update end");
+                BatchApplication.logger.error(LogCode.map.get(e.toString()));
+                BatchApplication.logger.info(atcoderUserDomain.getAtcoderId() + " user information get failed");
+            }
+
+            //ユーザー情報更新
+            try{
+                atcoderUserRepositoryInterface.update(atcoderUserDomain);
             }
             catch(Exception e) {
                 BatchApplication.logger.error(LogCode.map.get(e.toString()));
-                BatchApplication.logger.info(atcoderUserDomain.getAtcoderId() + " information update failed");
+                BatchApplication.logger.info(atcoderUserDomain.getAtcoderId() + " user information update failed");
             }
+
+            try{
+                // rated historyを取得
+                AtcoderUserHistoryDomain atcoderUserHistoryDomain = new AtcoderUserHistoryDomain(atcoderUserDomain.getAtcoderId());
+                atcoderUserHistoryDomain.setAtcoderUserContestDomainsFromAtcoderPage();
+                //更新
+                atcoderUserHistoryRepositoryInterface.update(atcoderUserHistoryDomain);
+            }
+            catch(Exception e) {
+                BatchApplication.logger.error(LogCode.map.get(e.toString()));
+                BatchApplication.logger.info(atcoderUserDomain.getAtcoderId() + " history information update failed");
+            }
+
+            BatchApplication.logger.info(atcoderUserDomain.getAtcoderId() + " information update end");
         }
+        System.out.println(atcoderUserDomains.get(0).toString());
     } 
 }

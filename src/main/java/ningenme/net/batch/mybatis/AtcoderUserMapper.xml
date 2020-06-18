@@ -9,6 +9,7 @@
         <id property="topcoderId" column="topcoder_id"/>
         <id property="codeforcesId" column="codeforces_id"/>
         <id property="rank" column="rank"/>
+        <id property="deletedTime" column="deleted_time"/>
         <id property="updatedTime" column="updated_time"/>
         <id property="createdTime" column="created_time"/>
     </resultMap>
@@ -30,8 +31,8 @@
         rank          = #{rank},
         current_rate  = #{currentRate},
         highest_rate  = #{highestRate},
-        country       = #{country}
+        country       = #{country},
+        deleted_time  = #{deletedTime}
         where atcoder_id = #{atcoderId}
     </update>
 </mapper>
-
