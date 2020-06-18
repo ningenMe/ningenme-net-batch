@@ -29,7 +29,6 @@ public class AtcoderUserServiceImplement implements AtcoderUserServiceInterface 
     @Override
     public void updateAtcoderUser() {
         //ユーザーリストを取得
-
         List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select();
         // List<AtcoderUserDomain> atcoderUserDomains = atcoderUserRepositoryInterface.select("ningenMe");
         
@@ -72,6 +71,5 @@ public class AtcoderUserServiceImplement implements AtcoderUserServiceInterface 
 
             BatchApplication.logger.info(atcoderUserDomain.getAtcoderId() + " information update end");
         }
-        System.out.println(atcoderUserDomains.get(0).toString());
     } 
 }

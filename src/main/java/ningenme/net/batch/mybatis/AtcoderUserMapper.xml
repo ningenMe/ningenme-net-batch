@@ -23,6 +23,7 @@
                 AND deleted_time IS NULL
             </if>
         </where>
+        ORDER BY updated_time ASC
     </select>
     <update id="update">
         UPDATE atcoder_user SET
