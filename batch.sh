@@ -4,5 +4,5 @@ value=`sudo -u ec2-user aws ssm get-parameters --name $key --query "Parameters[*
 export $key=$value
 done
 
-java -jar `pwd`/target/ningenme-net-batch.jar $1
+java -Xms1024m -Xmx1024m -jar `pwd`/target/ningenme-net-batch.jar $1
 curl -X POST --data-urlencode "payload={\"text\":\"succeeded $1 process\",\"channel\":\"#log-info\",}" $SLACK_WEBHOOK_URL
