@@ -24,6 +24,7 @@
             </if>
         </where>
         ORDER BY updated_time ASC
+        LIMIT 1000
     </select>
     <update id="update">
         UPDATE atcoder_user SET
