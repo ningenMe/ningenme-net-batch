@@ -12,7 +12,7 @@ value=`sudo -u ec2-user aws ssm get-parameters --name $key --query "Parameters[*
 export $key=$value
 done
 
-sudo cp cron.txt /var/spool/cron/ec2-user
+crontab cron.txt
 
 # java -jar target/ningenme-net-batch.jar &
 # curl -X POST --data-urlencode "payload={\"text\":\"succeeded batch deploy\",\"channel\":\"#log-info\",}" $SLACK_WEBHOOK_URL
