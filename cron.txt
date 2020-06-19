@@ -1,1 +1,2 @@
 * * * * * touch /home/ec2-user/hoge.txt
+0 * * * 1-3 sh /home/ec2-user/ningenme-net-batch/batch.sh updateAtcoderUser
