@@ -6,5 +6,5 @@ import ningenme.net.batch.domain.AtcoderUserContestDomain;
 
 @Mapper
 public interface AtcoderUserContestMapper {
-    int replace(AtcoderUserContestDomain atcoderUserContestDomain);
+    int insert(AtcoderUserContestDomain atcoderUserContestDomain);
 }

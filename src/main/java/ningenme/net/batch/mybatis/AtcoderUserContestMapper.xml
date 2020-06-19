@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="ningenme.net.batch.mybatis.AtcoderUserContestMapper">
-    <insert id="replace">
-        REPLACE INTO atcoder_user_contest SET
+    <insert id="insert">
+        INSERT IGNORE INTO atcoder_user_contest SET
         atcoder_id          = #{atcoderId},
         contest_name_en     = #{contestNameEn},
         is_rated            = #{isRated},
@@ -19,4 +19,3 @@
         end_time            = #{endTime}
     </insert>
 </mapper>
-

@@ -19,7 +19,7 @@ public class AtcoderUserHistoryRepositoryImplement implements AtcoderUserHistory
     public void update(AtcoderUserHistoryDomain atcoderUserHistoryDomain){
         for(AtcoderUserContestDomain atcoderUserContestDomain : atcoderUserHistoryDomain.getAtcoderUserContestDomains()) {
             try{
-                this.sqlSessionTemplate.getMapper(AtcoderUserContestMapper.class).replace(atcoderUserContestDomain);
+                this.sqlSessionTemplate.getMapper(AtcoderUserContestMapper.class).insert(atcoderUserContestDomain);
             }
             catch(Exception e) {
                 System.out.println(e);
