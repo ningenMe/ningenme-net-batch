@@ -6,6 +6,7 @@ target/
 
 ### settings ###
 log
+batch_log
 
 ### STS ###
 .apt_generated
