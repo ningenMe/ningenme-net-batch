@@ -4,7 +4,7 @@ value=`sudo -u ec2-user aws ssm get-parameters --name $key --query "Parameters[*
 export $key=$value
 done
 
-if [$1 = "updateAtcoderUser"] ； then
+if [ $1 = "updateAtcoderUser" ] ； then
   export BATCH_PORT=9000
 fi
 
