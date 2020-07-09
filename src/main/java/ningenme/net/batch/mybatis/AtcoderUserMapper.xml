@@ -34,7 +34,8 @@
         current_rate  = #{currentRate},
         highest_rate  = #{highestRate},
         country       = #{country},
-        deleted_time  = #{deletedTime}
+        deleted_time  = #{deletedTime},
+        updated_time  = NOW()
         where atcoder_id = #{atcoderId}
     </update>
 </mapper>
